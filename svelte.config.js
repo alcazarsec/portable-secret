@@ -17,7 +17,9 @@ const config = {
             strict: true
         }),
         paths: {
-            base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+            base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
+            // Resolve base from current location so saved HTML works when opened from file:// (no redirect loop)
+            relative: true
         },
         prerender: {
             entries: ['/'],
