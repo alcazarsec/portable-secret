@@ -11,14 +11,12 @@ const config = {
         adapter: adapter({
             pages: 'build',
             assets: 'build',
-            fallback: 'index.html',
-            // fallback: '404.html'
             precompress: false,
             strict: true
         }),
         paths: {
             base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
-            // Resolve base from current location so saved HTML works when opened from file:// (no redirect loop)
+            // Use runtime-relative base/assets in prerendered pages for file:// portability
             relative: true
         },
         prerender: {

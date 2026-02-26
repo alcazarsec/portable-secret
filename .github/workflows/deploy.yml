@@ -1,5 +1,4 @@
 # https://svelte.dev/docs/kit/adapter-static#GitHub-Pages
-# static/.nojekyll disables Jekyll so that _app/ and other underscore-prefixed paths are served
 name: Deploy to GitHub Pages
 
 on:
