@@ -1,0 +1,227 @@
+<!doctype html>
+<!--
+Portable Secret generated with https://alcazarsec.com/ps
+
+This file is self-contained, it embeds an encrypted payload.
+It uses your browser's cryptograpy APIs to decrypt it, if you know the password.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Portable Secret · open</title>
+        <style>
+            /*{.STYLE}*/
+        </style>
+    </head>
+
+    <body>
+        <div class="bg-background flex min-h-screen w-full flex-col items-center p-4 md:px-8 md:py-8 xl:px-16">
+            <main class="flex w-full max-w-2xl flex-1 flex-col gap-8">
+                <header class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div class="flex w-full items-start gap-4 md:gap-8">
+                        <a class="shrink-0" href="https://alcazarsec.com/">
+                            <div class="group relative">
+                                <svg
+                                    width="64"
+                                    height="64"
+                                    viewBox="0 0 64 64"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect width="64" height="64" rx="19.63" fill="var(--primary)"></rect>
+                                    <rect
+                                        x="12.125"
+                                        y="16.25"
+                                        width="39.875"
+                                        height="31.375"
+                                        rx="2.5"
+                                        fill="var(--primary-foreground)"
+                                    ></rect>
+                                    <path
+                                        d="M28.25 32.625H35.75V30.25C35.75 28.1789 34.0711 26.5 32 26.5C29.9289 26.5 28.25 28.1789 28.25 30.25V32.625ZM32.0156 36.5C31.3253 36.5 30.7656 37.0596 30.7656 37.75C30.7656 38.1668 30.9705 38.5346 31.2842 38.7617L30.5 41.1875H33.5312L32.7461 38.7617C33.06 38.5346 33.2656 38.167 33.2656 37.75C33.2656 37.1029 32.7737 36.571 32.1436 36.5068L32.0156 36.5ZM38.25 32.666C39.6689 32.904 40.75 34.1385 40.75 35.625V42.125C40.75 43.7819 39.4069 45.125 37.75 45.125H26.25C24.5931 45.125 23.25 43.7819 23.25 42.125V35.625C23.25 34.1385 24.3311 32.904 25.75 32.666V30.25C25.75 26.7982 28.5482 24 32 24C35.4518 24 38.25 26.7982 38.25 30.25V32.666Z"
+                                        fill="var(--primary)"
+                                    ></path>
+                                    <rect x="12.125" y="21" width="39.875" height="0.625" fill="var(--primary)"></rect>
+                                    <circle cx="14.4375" cy="18.5625" r="0.9375" fill="var(--primary)"></circle>
+                                    <circle cx="17.1875" cy="18.5625" r="0.9375" fill="var(--primary)"></circle>
+                                    <circle cx="19.9375" cy="18.5625" r="0.9375" fill="var(--primary)"></circle>
+                                </svg>
+                                <div class="absolute inset-0 z-10 hidden items-center justify-center group-hover:flex">
+                                    <svg
+                                        width="64"
+                                        height="64"
+                                        viewBox="0 0 64 64"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <rect width="64" height="64" rx="19.63" fill="var(--primary)"></rect>
+                                        <path
+                                            d="M51.937 41.18H42.5239L37.8472 51.0335H26.0757L21.3989 41.18H12.063L25.4819 12.9036H38.5181L51.937 41.18ZM24.8062 35.3333H27.5386L31.9604 44.6516L36.3833 35.3333H39.1938L31.9995 20.1741L24.8062 35.3333Z"
+                                            fill="var(--primary-foreground)"
+                                        ></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="w-full">
+                            <h1 class="text-foreground text-3xl font-semibold">Portable Secret · open</h1>
+                            <p class="text-muted-foreground text-sm text-balance">
+                                A self-contained HTML file that decrypts locally in your browser.
+                            </p>
+                        </div>
+                    </div>
+                </header>
+                <div
+                    id="ps-connectivity-online"
+                    role="status"
+                    class="hidden rounded-lg border px-4 py-3 text-sm font-medium border-red-600/70 bg-red-500/15 text-red-800"
+                >
+                    You're connected to the internet. Before typing the password, turn off the internet connection.
+                </div>
+                <div
+                    id="ps-connectivity-local"
+                    role="status"
+                    class="hidden rounded-lg border px-4 py-3 text-sm font-medium border-emerald-600/60 bg-emerald-500/15 text-emerald-800"
+                >
+                    You're running this page locally and you're offline. Your secrets never leave this device.
+                </div>
+                <div
+                    id="ps-connectivity-offline"
+                    role="status"
+                    class="hidden rounded-lg border px-4 py-3 text-sm font-medium border-amber-500/70 bg-amber-500/15 text-amber-800"
+                >
+                    You're offline. Consider also saving this page and opening it locally.
+                </div>
+                <div class="bg-accent flex flex-col gap-4 rounded-2xl p-6">
+                    <form id="ps-form" class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-2 md:gap-3">
+                            <label class="text-foreground text-sm font-medium" for="ps-hint">Hint or note</label>
+                            <pre
+                                id="ps-hint"
+                                class="bg-white rounded-md border p-3 text-sm wrap-break-word whitespace-pre-wrap shadow-xs"
+                            >
+{.HINT}</pre
+                            >
+                        </div>
+                        <div class="flex flex-col gap-4 md:flex-row md:items-end md:gap-6">
+                            <div class="flex flex-1 flex-col gap-2 md:gap-3">
+                                <label for="ps-password" class="text-foreground text-sm font-medium">Password</label>
+                                <input
+                                    id="ps-password"
+                                    type="password"
+                                    autocomplete="current-password"
+                                    class="bg-white text-foreground border-border h-10 rounded-md border px-3 text-sm shadow-xs"
+                                    placeholder="See hint above"
+                                />
+                            </div>
+                            <button
+                                id="ps-decrypt"
+                                class="bg-primary text-primary-foreground h-10 w-full rounded-md px-4 text-sm font-semibold shadow-xs disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
+                                type="submit"
+                            >
+                                Decrypt<span
+                                    id="ps-decrypt-time"
+                                    class="text-primary-foreground/80 ml-1 text-xs font-normal"
+                                ></span>
+                            </button>
+                        </div>
+                        <details>
+                            <summary
+                                class="text-muted-foreground hover:text-foreground flex cursor-pointer list-none items-center gap-1 text-sm transition-colors"
+                            >
+                                <svg
+                                    class="size-4"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M6 9l6 6 6-6"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                Advanced settings
+                            </summary>
+                            <div class="mt-4 ml-4 flex flex-col gap-4">
+                                <p class="text-muted-foreground text-sm">
+                                    This portable secret contains {.PAYLOAD_SIZE} of {.PAYLOAD_NAME}.
+                                </p>
+                                <div class="text-muted-foreground text-xs" id="ps-iterations-info">Calibrating…</div>
+                            </div>
+                        </details>
+                        <div id="ps-progress-container" class="hidden">
+                            <div class="bg-primary/20 relative h-2 w-full overflow-hidden rounded-full">
+                                <div
+                                    id="ps-progress-bar"
+                                    class="bg-primary h-full transition-transform duration-100"
+                                    style="transform: translateX(-100%)"
+                                ></div>
+                            </div>
+                            <div class="text-muted-foreground mt-1 flex justify-between text-xs">
+                                <span id="ps-elapsed"></span>
+                                <span id="ps-remaining"></span>
+                            </div>
+                        </div>
+                        <div class="text-muted-foreground hidden min-h-[18px] text-sm" id="ps-status"></div>
+                    </form>
+                    <div id="ps-decrypted-wrapper" class="hidden flex-col gap-6">
+                        <div id="ps-text-wrapper" class="flex flex-col gap-2 md:gap-3">
+                            <div class="text-foreground text-sm font-medium">Decrypted text</div>
+                            <pre
+                                id="ps-output"
+                                class="bg-white rounded-md border p-3 text-sm wrap-break-word whitespace-pre-wrap shadow-xs"
+                            ></pre>
+                        </div>
+                        <div id="ps-files-wrapper" class="flex flex-col gap-2 md:gap-3">
+                            <div class="text-foreground text-sm font-medium">Files</div>
+                            <ul
+                                id="ps-files"
+                                class="bg-white flex flex-col gap-2 rounded-md border p-3 text-sm shadow-xs"
+                            ></ul>
+                        </div>
+                    </div>
+                </div>
+                <section class="border-primary flex flex-col gap-2 border-l-2 pl-4">
+                    <h2 class="text-primary text-xl">How does it work?</h2>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm">
+                            The secret contents will be <strong>decrypted locally</strong> in the browser without making
+                            any call to the internet. But <em>don't trust, verify</em>. Open it in a
+                            <strong>private window</strong> and <strong>turn the wifi/data off</strong> before typing
+                            the password.
+                        </p>
+                    </div>
+                </section>
+                <section class="border-primary flex flex-col gap-2 border-l-2 pl-4">
+                    <h2 class="text-primary text-xl">What's inside</h2>
+                    <div class="flex flex-col gap-2">
+                        <p class="text-sm">
+                            It may contain <strong>text and/or files</strong>. You can view or download them after
+                            decryption.
+                        </p>
+                    </div>
+                </section>
+                <p class="text-muted-foreground text-sm">
+                    Have any more questions?
+                    <a class="underline" href="https://alcazarsec.com/ps#faq">Read the FAQ</a>.
+                </p>
+                <p class="mt-auto">
+                    <strong>Need help?</strong> Get in touch at
+                    <a class="underline" href="mailto:support@alcazarsec.com">support@alcazarsec.com</a>. Learn more at
+                    <a class="underline" href="https://alse.cc/ps">alse.cc/ps</a>.
+                </p>
+            </main>
+        </div>
+        <!--PS:METADATA:{.METADATA}-->
+        <!--PS:PAYLOAD:{.PAYLOAD}-->
+        <script>
+            /*{.SCRIPT}*/
+        </script>
+        <!--{.ARGON2_SCRIPT}-->
+    </body>
+</html>
