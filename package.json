@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "pnpm run build:ps-template && svelte-kit sync && vite dev",
         "prod": "pnpm run build && vite preview",
-        "build": "pnpm run build:ps-template && vite build",
+        "build": "pnpm run build:ps-template && vite build && node scripts/relative-base-fallback.cjs",
         "build:ps-template": "pnpm run build:ps-template:js && pnpm run build:ps-template:css",
         "build:ps-template:js": "pnpm exec esbuild ./src/lib/ps/template/template.ts --bundle --outfile=./src/lib/ps/template/template.js --target=chrome111,firefox128,safari16",
         "build:ps-template:css": "pnpm exec tailwindcss -i ./src/lib/ps/template/template.input.css -o ./src/lib/ps/template/template.css --minify",
