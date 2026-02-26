@@ -1,0 +1,59 @@
+{
+    "name": "portable-secret",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "pnpm run build:ps-template && svelte-kit sync && vite dev",
+        "prod": "pnpm run build && vite preview",
+        "build": "pnpm run build:ps-template && vite build",
+        "build:ps-template": "pnpm run build:ps-template:js && pnpm run build:ps-template:css",
+        "build:ps-template:js": "pnpm exec esbuild ./src/lib/ps/template/template.ts --bundle --outfile=./src/lib/ps/template/template.js --target=chrome111,firefox128,safari16",
+        "build:ps-template:css": "pnpm exec tailwindcss -i ./src/lib/ps/template/template.input.css -o ./src/lib/ps/template/template.css --minify",
+        "preview": "vite preview",
+        "prepare": "svelte-kit sync || echo ''",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "format": "prettier --write .",
+        "lint": "prettier --check . && eslint ."
+    },
+    "devDependencies": {
+        "@eslint/compat": "^2.0.2",
+        "@eslint/js": "^10.0.1",
+        "@lucide/svelte": "^0.575.0",
+        "@sveltejs/adapter-static": "^3.0.10",
+        "@sveltejs/kit": "^2.53.2",
+        "@sveltejs/vite-plugin-svelte": "^6.2.4",
+        "@tailwindcss/cli": "^4.2.1",
+        "@tailwindcss/forms": "^0.5.11",
+        "@tailwindcss/typography": "^0.5.19",
+        "@tailwindcss/vite": "^4.2.1",
+        "bits-ui": "^2.16.2",
+        "clsx": "^2.1.1",
+        "esbuild": "^0.27.3",
+        "eslint": "^10.0.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-svelte": "^3.15.0",
+        "globals": "^17.3.0",
+        "hash-wasm": "^4.12.0",
+        "marked": "^17.0.3",
+        "mdsvex": "^0.12.6",
+        "prettier": "^3.8.1",
+        "prettier-plugin-svelte": "^3.5.0",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "runed": "^0.37.1",
+        "svelte": "^5.53.5",
+        "svelte-check": "^4.4.3",
+        "svelte-toolbelt": "^0.10.6",
+        "tailwind-merge": "^3.5.0",
+        "tailwind-variants": "^3.2.2",
+        "tailwindcss": "^4.2.1",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.56.1",
+        "vite": "^7.3.1"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
+    }
+}
