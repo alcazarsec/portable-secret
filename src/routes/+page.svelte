@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from '$app/environment';
     import { COMPANY_NAME, LANDING_HOSTNAME } from '$lib/config.js';
+    import CompanyLogoLong from '$lib/components/landing/CompanyLogoLong.svelte';
     import CompanyLogoSquare from '$lib/components/landing/CompanyLogoSquare.svelte';
     import PSLogoSquare from '$lib/components/landing/PSLogoSquare.svelte';
     import { buttonVariants } from '$lib/components/ui/button';
@@ -52,9 +53,14 @@
     const MIN_PBKDF2_ITERATIONS = 5_000_000;
 
     const landingUrl = `https://${LANDING_HOSTNAME}/`;
+    const dmsUrl = `https://${LANDING_HOSTNAME}/deadmanswitch`;
     const pageTitle = 'Portable Secret · create';
     const pageDescription = 'Generate self-contained HTML files that decrypt locally in your browser.';
     const pageUrl = $derived(`https://${LANDING_HOSTNAME}/ps`);
+    const footerProducts = [
+        { label: 'Silent alarm', href: landingUrl },
+        { label: "Dead Man's Switch", href: dmsUrl }
+    ];
 
     type KdfMode = 'argon2id' | 'pbkdf2';
 
@@ -843,10 +849,19 @@
 </section>
 
 <hr />
-<p class="text-muted-foreground text-sm">
-    Portable Secret, brought to you by
-    <a href={landingUrl} class="text-primary hover:underline">
-        <strong>{COMPANY_NAME}</strong>
-    </a>.
-    <a href={landingUrl} class="hover:underline"> Protect what matters</a>.
-</p>
+<footer class="flex flex-col gap-4 py-2 sm:flex-row sm:items-center sm:justify-between">
+    <a
+        href={landingUrl}
+        aria-label="Alcazar Security"
+        class="w-fit transition-opacity hover:opacity-80"
+    >
+        <CompanyLogoLong invertColors={true} />
+    </a>
+    <nav aria-label="Other Alcazar products" class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+        {#each footerProducts as product}
+            <a href={product.href} class="text-muted-foreground transition-colors hover:text-foreground">
+                {product.label}
+            </a>
+        {/each}
+    </nav>
+</footer>
